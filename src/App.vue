@@ -1,7 +1,7 @@
 <template lang="pug">
   div#app.container
     Header(v-bind:userInfo="userInfo")
-    router-view(v-bind:userInfo="userInfo")
+    router-view(v-bind:userInfo="userInfo" v-bind:allUsers="allUsers")
     Footer
 </template>
 
@@ -31,16 +31,12 @@ function createUser ({userId, username, firstName, lastName, profilePic, joinDat
     
     joinDate: dateString,
     profilePic: profilePic || 'https://telegra.ph/file/1d86ed45c9ed18926660a.jpg',
-
-    // authenticated: false,
-    authenticated: true,
     telegramLink: `https://t.me/${username}`,
 
     logout() {
       for (const prop of Object.keys(this)) {
         this[prop] = null
       }
-      this.authenticated = false
     },
   }
 }
@@ -64,6 +60,7 @@ export default {
         // profilePic: 'http://localhost:8081/img/logo.82b9c7a5.png',
         // profilePic: 'http://localhost:8081/img/logo.82b9c7a5.png',
       }),
+      allUsers: [createUser({ firstName: 'John', userId: 12345 })],
     }
   },
   created() {
