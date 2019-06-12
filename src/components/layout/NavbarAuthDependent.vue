@@ -13,15 +13,9 @@ import router from '../../router'
 export default {
   name: 'NavbarAuthDependent',
   props: ['userInfo'],
-  data() {
-    return {
-      authenticated: true,
-      // authenticated: false,
-    }
-  },
   methods: {
     logout() {
-      this.authenticated = false
+      this.userInfo.logout()
       router.push('/')
     },
   },
