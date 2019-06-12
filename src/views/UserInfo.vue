@@ -5,12 +5,9 @@
 
 <script>
 import Profile from './Profile'
-import router from '../router'
-
 
 export default {
   name: 'UserInfo',
-  // props: ['allUsers'],
   components: {
     Profile,
   },
