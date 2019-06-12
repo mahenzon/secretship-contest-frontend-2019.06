@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(v-if="userInfo.authenticated").container
+  div(v-if="userInfo.userId").container
     br
     .row
       .card
