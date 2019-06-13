@@ -1,5 +1,5 @@
 <template lang="pug">
-  ul(v-if="userInfo.userId").navbar-nav.ml-auto
+  ul(v-if="userInfo.user_id").navbar-nav.ml-auto
     li.nav-item
       router-link(to="/profile").nav-link Profile info
     button(@click="logout()").btn.btn-outline-dark.my-2.my-sm-0 Logout
