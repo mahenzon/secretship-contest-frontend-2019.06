@@ -14,25 +14,29 @@ import axios from 'axios'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 
-function createUser ({userId, username, firstName, lastName, profilePic, joinDate, locale}) {
-  const dateStringOptions = { year: 'numeric', month: 'long', day: 'numeric' }
-  let dateString
-  try {
-    dateString = (new Date(joinDate)).toLocaleDateString(locale, dateStringOptions)
-  } catch (error) {
-    dateString = (new Date(joinDate)).toLocaleDateString('en-US', dateStringOptions)
-  }
-  return {
-    userId,
-    username,
-    firstName,
-    lastName,
-    locale,
-    
-    joinDate: dateString,
-    profilePic: profilePic || 'https://telegra.ph/file/1d86ed45c9ed18926660a.jpg',
-    telegramLink: `https://t.me/${username}`,
+const dateStringOptions = { year: 'numeric', month: 'long', day: 'numeric' }
+function createUser ({user_id, username, first_name, last_name, profilePic, joinDate, language_code}) {
 
+  return {
+    user_id,
+    username,
+    first_name,
+    last_name,
+    language_code,
+    joinDate,
+    
+    profilePic: profilePic || 'https://telegra.ph/file/1d86ed45c9ed18926660a.jpg',
+    
+    joinDateString() {
+      try {
+        return (new Date(this.joinDate)).toLocaleDateString(this.language_code, dateStringOptions)
+      } catch (error) {
+        return (new Date(this.joinDate)).toLocaleDateString('en-US', dateStringOptions)
+      }
+    },
+    telegramLink() {
+      return `https://t.me/${this.username}`
+    },
     logout() {
       for (const prop of Object.keys(this)) {
         this[prop] = null
@@ -51,16 +55,16 @@ export default {
   data() {
     return {
       userInfo: createUser({
-        userId: 3595399,
+        user_id: 3595399,
         username: 'surik00',
-        firstName: 'Suren',
-        lastName: 'Khorenyan',
+        first_name: 'Suren',
+        last_name: 'Khorenyan',
         joinDate: 1560291120000,
-        // locale: 'ru',
+        language_code: 'ru',
         // profilePic: 'http://localhost:8081/img/logo.82b9c7a5.png',
         // profilePic: 'http://localhost:8081/img/logo.82b9c7a5.png',
       }),
-      allUsers: [createUser({ firstName: 'John', userId: 12345 })],
+      allUsers: [createUser({ first_name: 'John', user_id: 12345 })],
     }
   },
   created() {
