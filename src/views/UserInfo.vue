@@ -1,6 +1,6 @@
 <template lang="pug">
-  Profile(v-if="userInfo" v-bind:userInfo="userInfo")
-  div(v-else).alert.alert-danger.text-center Wrong user ID
+  div(v-if="errorText").alert.alert-danger.text-center {{ errorText }}
+  Profile(v-else v-bind:userInfo="userInfo")
 </template>
 
 <script>
@@ -15,6 +15,8 @@ export default {
     console.log('data!!')
     return {
       userInfo: {},
+      errorText: null,
+      noDataText: 'An error occured',
     }
   },
   mounted () {
@@ -28,6 +30,8 @@ export default {
     prepareUserInfo () {
       console.log('prepareUserInfo')
       // TODO: request to api to get user info!!
+      this.userInfo = {}
+      this.errorText = `Wrong user ID ${this.$route.params.id}`
     }
   }
 }
