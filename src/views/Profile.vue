@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(v-if="userInfo.userId").container
+  div(v-if="userInfo.user_id").container
     br
     .row
       .card
@@ -8,26 +8,25 @@
         .card-body
           img#profile-image.rounded-circle.img-fluid(alt="User Pic", v-bind:src="userInfo.profilePic")
           .container
-            h2 {{ userInfo.firstName }} {{ userInfo.lastName }}
+            h2 {{ userInfo.first_name }} {{ userInfo.last_name }}
             p(v-if="userInfo.username")
-              a(v-bind="{href: userInfo.telegramLink}" target="blank") @{{ userInfo.username }}
+              a(v-bind="{href: userInfo.telegramLink()}" target="blank") @{{ userInfo.username }}
             p
-              small.text-secondary ID: {{ userInfo.userId }}
-              span(v-if="userInfo.locale")
+              small.text-secondary ID: {{ userInfo.user_id }}
+              span(v-if="userInfo.language_code")
                 br
-                small.text-secondary Locale: {{ userInfo.locale }}
+                small.text-secondary Language: {{ userInfo.language_code }}
           hr
-          div Join date: {{ userInfo.joinDate }}
+          div Join date: {{ userInfo.joinDateString() }}
   div(v-else)
-    h1 Please authorize
+    h1 {{ noDataText || 'Please authorize' }}
     div {{ userInfo }}
 </template>
-
 
 <script>
 export default {
   name: 'Profile',
-  props: ['userInfo'],
+  props: ['userInfo', 'noDataText'],
 }
 </script>
 
