@@ -15,7 +15,7 @@ import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 
 const dateStringOptions = { year: 'numeric', month: 'long', day: 'numeric' }
-function createUser ({user_id, username, first_name, last_name, profilePic, joinDate, language_code}) {
+function createUser ({user_id, username, first_name, last_name, join_date, language_code, profilePic}) {
 
   return {
     user_id,
@@ -23,15 +23,21 @@ function createUser ({user_id, username, first_name, last_name, profilePic, join
     first_name,
     last_name,
     language_code,
-    joinDate,
+    join_date,
     
     profilePic: profilePic || 'https://telegra.ph/file/1d86ed45c9ed18926660a.jpg',
     
     joinDateString() {
+      const joinDate = new Date(this.join_date)
       try {
-        return (new Date(this.joinDate)).toLocaleDateString(this.language_code, dateStringOptions)
+        return joinDate.toLocaleDateString(this.language_code, dateStringOptions)
       } catch (error) {
-        return (new Date(this.joinDate)).toLocaleDateString('en-US', dateStringOptions)
+        try {
+          const lang = navigator.language || navigator.userLanguage
+          return joinDate.toLocaleDateString(lang, dateStringOptions)
+        } catch (error) {
+          return joinDate.toLocaleDateString('en-US', dateStringOptions)
+        }
       }
     },
     telegramLink() {
@@ -59,8 +65,8 @@ export default {
         username: 'surik00',
         first_name: 'Suren',
         last_name: 'Khorenyan',
-        joinDate: 1560291120000,
-        language_code: 'ru',
+        // language_code: 'ru',
+        join_date: 1560291120000,
         // profilePic: 'http://localhost:8081/img/logo.82b9c7a5.png',
         // profilePic: 'http://localhost:8081/img/logo.82b9c7a5.png',
       }),
