@@ -1,3 +1,4 @@
+const DEFAULT_USERPIC = 'https://telegra.ph/file/1d86ed45c9ed18926660a.jpg'
 const dateStringOptions = { year: 'numeric', month: 'long', day: 'numeric' }
 function createUser ({
   user_id, 
@@ -17,10 +18,10 @@ function createUser ({
     join_date,
     profile_photo_id,
     
-    
-    profilePic: 'https://telegra.ph/file/1d86ed45c9ed18926660a.jpg',
+    profilePic: DEFAULT_USERPIC,
     loadProfilePic () {
-      if (this.profile_photo_id) {
+      if (this.profile_photo_id && this.profilePic == DEFAULT_USERPIC) {
+        // Load real profile pic if it's not already cached
         this.getProfilePicURL()
       }
     },
@@ -47,6 +48,7 @@ function createUser ({
       return `https://t.me/${this.username}`
     },
     logout() {
+      // TODO: call API and then clean cache
       for (const prop of Object.keys(this)) {
         this[prop] = null
       }
