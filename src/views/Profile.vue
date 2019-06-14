@@ -6,7 +6,7 @@
         .card-header
           h4 User Profile
         .card-body
-          img#profile-image.rounded-circle.img-fluid(alt="User Pic", v-bind:src="userInfo.profilePic || 'https://telegra.ph/file/1d86ed45c9ed18926660a.jpg'")
+          img.profile-image.rounded-circle.img-fluid.mb-3(alt="User Pic", v-bind:src="userInfo.profilePic")
           .container
             h2 {{ userInfo.first_name }} {{ userInfo.last_name }}
             p(v-if="userInfo.username")
@@ -27,11 +27,21 @@
 export default {
   name: 'Profile',
   props: ['userInfo', 'noDataText'],
+  mounted () {
+    this.userInfo.loadProfilePic()
+  },
+  beforeRouteUpdate (to, from, next) {
+    this.userInfo.loadProfilePic()
+    next()
+  },
 }
 </script>
 
 <style scoped>
-  #profile-image {
+  .profile-image {
     width: 420px;
+    height: 420px;
+    object-fit: cover;
+    -o-object-fit: cover;
   }
 </style>

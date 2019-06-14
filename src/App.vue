@@ -33,6 +33,7 @@ export default {
         last_name: 'Khorenyan',
         // language_code: 'ru',
         join_date: 1560291120000,
+        profile_photo_id: 'wasd',
       }),
       allUsers: [createUser({ first_name: 'John', user_id: 12345 })],
     }
