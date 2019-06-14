@@ -15,8 +15,7 @@ import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 
 const dateStringOptions = { year: 'numeric', month: 'long', day: 'numeric' }
-function createUser ({user_id, username, first_name, last_name, join_date, language_code, profilePic}) {
-
+function createUser ({ user_id, username, first_name, last_name, join_date, language_code }) {
   return {
     user_id,
     username,
@@ -25,8 +24,7 @@ function createUser ({user_id, username, first_name, last_name, join_date, langu
     language_code,
     join_date,
     
-    profilePic: profilePic || 'https://telegra.ph/file/1d86ed45c9ed18926660a.jpg',
-    
+    profilePic: null,
     joinDateString() {
       const joinDate = new Date(this.join_date)
       try {
@@ -51,7 +49,6 @@ function createUser ({user_id, username, first_name, last_name, join_date, langu
   }
 }
 
-
 export default {
   name: 'app',
   components: {
@@ -67,8 +64,6 @@ export default {
         last_name: 'Khorenyan',
         // language_code: 'ru',
         join_date: 1560291120000,
-        // profilePic: 'http://localhost:8081/img/logo.82b9c7a5.png',
-        // profilePic: 'http://localhost:8081/img/logo.82b9c7a5.png',
       }),
       allUsers: [createUser({ first_name: 'John', user_id: 12345 })],
     }

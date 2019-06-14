@@ -6,7 +6,7 @@
         .card-header
           h4 User Profile
         .card-body
-          img#profile-image.rounded-circle.img-fluid(alt="User Pic", v-bind:src="userInfo.profilePic")
+          img#profile-image.rounded-circle.img-fluid(alt="User Pic", v-bind:src="userInfo.profilePic || 'https://telegra.ph/file/1d86ed45c9ed18926660a.jpg'")
           .container
             h2 {{ userInfo.first_name }} {{ userInfo.last_name }}
             p(v-if="userInfo.username")
