@@ -1,5 +1,7 @@
 <template lang="pug">
-  div(v-if="errorText").alert.alert-danger.text-center {{ errorText }}
+  div(v-if="errorText")
+    br
+    .alert.alert-danger.text-center {{ errorText }}
   Profile(v-else v-bind:userInfo="userInfo")
 </template>
 
