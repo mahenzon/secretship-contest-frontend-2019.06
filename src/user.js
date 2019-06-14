@@ -17,10 +17,10 @@ function createUser ({
     language_code,
     join_date,
     profile_photo_id,
-    
+
     profilePic: DEFAULT_USERPIC,
-    loadProfilePic () {
-      if (this.profile_photo_id && this.profilePic == DEFAULT_USERPIC) {
+    loadProfilePic() {
+      if (this.profile_photo_id && this.profilePic === DEFAULT_USERPIC) {
         // Load real profile pic if it's not already cached
         this.getProfilePicURL()
       }
@@ -39,7 +39,7 @@ function createUser ({
         try {
           const lang = navigator.language || navigator.userLanguage
           return joinDate.toLocaleDateString(lang, dateStringOptions)
-        } catch (error) {
+        } catch (err) {
           return joinDate.toLocaleDateString('en-US', dateStringOptions)
         }
       }
@@ -59,4 +59,3 @@ function createUser ({
 export default {
   createUser,
 }
-
