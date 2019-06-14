@@ -9,6 +9,12 @@ function createUser ({
   language_code,
   profile_photo_id
 }) {
+  let profilePic
+  if (profile_photo_id) {
+    profilePic = `/telegram-media/${profile_photo_id}`
+  } else {
+    profilePic = DEFAULT_USERPIC
+  }
   return {
     user_id,
     username,
@@ -17,20 +23,8 @@ function createUser ({
     language_code,
     join_date,
     profile_photo_id,
+    profilePic,
 
-    profilePic: DEFAULT_USERPIC,
-    loadProfilePic() {
-      if (this.profile_photo_id && this.profilePic === DEFAULT_USERPIC) {
-        // Load real profile pic if it's not already cached
-        this.getProfilePicURL()
-      }
-    },
-    getProfilePicURL() {
-      this.profilePic = 'https://ippcdn-ippawards.netdna-ssl.com/wp-content/uploads/2018/07/34-1st-PANORAMA-Mateusz-Piesiak-1.jpg'
-      // TODO: get photo by id
-      // get, then set
-      // this.profilePic = 'https://qwe.123/img'
-    },
     joinDateString() {
       const joinDate = new Date(this.join_date)
       try {

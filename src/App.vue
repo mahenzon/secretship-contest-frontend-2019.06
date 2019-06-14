@@ -31,9 +31,9 @@ export default {
         username: 'surik00',
         first_name: 'Suren',
         last_name: 'Khorenyan',
-        // language_code: 'ru',
+        language_code: 'en',
         join_date: 1560291120000,
-        profile_photo_id: 'wasd',
+        profile_photo_id: 'AgADAgADKNkxG4fcNgAB7D6lxNdM8FRJDUsNAARBpmW0rIZhjuLBAAIC',
       }),
       allUsers: [createUser({ first_name: 'John', user_id: 12345 })],
     }

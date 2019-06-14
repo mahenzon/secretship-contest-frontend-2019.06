@@ -27,13 +27,6 @@
 export default {
   name: 'Profile',
   props: ['userInfo', 'noDataText'],
-  mounted () {
-    this.userInfo.loadProfilePic()
-  },
-  beforeRouteUpdate (to, from, next) {
-    this.userInfo.loadProfilePic()
-    next()
-  },
 }
 </script>
 
