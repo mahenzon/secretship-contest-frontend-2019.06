@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import router from '../../router'
 
 export default {
@@ -16,7 +17,14 @@ export default {
   methods: {
     logout() {
       this.userInfo.logout()
-      router.push('/')
+      axios.post('http://localhost:3001/api/logout')
+        .then((response) => {
+          router.push('/')
+        })
+        .catch((error) => {
+          this.errorMessage = error.response.data.error
+          router.push('/error')
+        })
     },
   },
 }
