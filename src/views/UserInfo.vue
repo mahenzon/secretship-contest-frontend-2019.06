@@ -12,7 +12,6 @@ export default {
     Profile,
   },
   data () {
-    console.log('data!!')
     return {
       userInfo: {},
       errorText: null,
@@ -28,7 +27,6 @@ export default {
   },
   methods: {
     prepareUserInfo () {
-      console.log('prepareUserInfo')
       // TODO: request to api to get user info!!
       this.userInfo = {}
       this.errorText = `Wrong user ID ${this.$route.params.id}`
