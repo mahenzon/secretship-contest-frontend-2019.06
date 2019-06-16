@@ -14,10 +14,9 @@ import axios from 'axios'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 
-import user from './user'
+import createUser from './helpers/user'
 import router from './router';
 
-const { createUser } = user
 axios.defaults.withCredentials = true
 
 export default {
@@ -30,7 +29,7 @@ export default {
     return {
       errorMessage: 'Unexpected error!',
       userInfo: {},
-      allUsers: [createUser({ first_name: 'John', user_id: 12345 })],
+      allUsers: [],
     }
   },
   methods: {
@@ -53,6 +52,28 @@ export default {
     },
   },
   created() {
+    // TODO: Fetch all users
+    this.allUsers = [
+        {
+            "user_id": 3595399,
+            "username": "surik00",
+            "first_name": "Suren",
+            "last_name": "Khorenyan",
+            "language_code": "en",
+            "profile_photo_id": "AgADAgADDeQxG4fcNgABmZPFDukwO1km_bcOAATlowK6ND80p_KQAgABAg",
+            "join_date": 1560628074204
+        },
+        {
+            "user_id": 622348102,
+            "username": null,
+            "first_name": "Thomas",
+            "last_name": "Anderson",
+            "language_code": "en",
+            "profile_photo_id": "AgADAgADqacxG0ZHGCWzptZhqjQVeodHUw8ABDrIsp-zohRHlHYCAAEC",
+            "join_date": 1560682973279
+        }
+    ]
+
     axios.get('http://localhost:3001/api/getMe')
       .then((response) => {
         this.userInfo = createUser(response.data.user)
