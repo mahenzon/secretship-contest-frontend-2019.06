@@ -13,8 +13,8 @@ function createUser ({
 }) {
   let profilePic
   if (profile_photo_id) {
-    profilePic = `http://localhost:3001/telegram-media/${profile_photo_id}`
-    // profilePic = `/telegram-media/${profile_photo_id}`
+    // profilePic = `http://localhost:3001/telegram-media/${profile_photo_id}`
+    profilePic = `/telegram-media/${profile_photo_id}`
   } else {
     profilePic = DEFAULT_USERPIC
   }
