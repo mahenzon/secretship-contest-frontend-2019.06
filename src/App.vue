@@ -1,7 +1,7 @@
 <template lang="pug">
   div#app.container
     Header(v-bind:userInfo="userInfo")
-    router-view(v-bind:userInfo="userInfo" v-bind:allUsers="allUsers" v-bind:errorMessage="errorMessage" v-on:login-user="loginUser")
+    router-view(v-bind:userInfo="userInfo" v-bind:allUsers="allUsers" v-bind:errorMessage="errorMessage")
     Footer
 </template>
 
@@ -32,25 +32,6 @@ export default {
       allUsers: [],
     }
   },
-  methods: {
-    loginUser(params) {
-      if (Object.keys(params).length === 0) {  // Check if empty object
-        return router.push('/')
-      }
-      axios.post('http://localhost:3001/api/login', params)
-        .then((response) => {
-          this.userInfo = createUser(response.data.user)
-          router.push('/profile')
-        })
-        .catch((error) => {
-          this.errorMessage = error.response.data.error
-          if(this.userInfo.user_id) {
-            this.userInfo.logout()
-          }
-          router.push('/error')
-        })
-    },
-  },
   created() {
     // TODO: Fetch all users
     this.allUsers = [
@@ -74,16 +55,37 @@ export default {
         }
     ]
 
-    axios.get('http://localhost:3001/api/getMe')
-      .then((response) => {
-        this.userInfo = createUser(response.data.user)
+    const newArray = []
+    for (let i = 0; i < 4; i++) {
+      newArray.push(...([...this.allUsers]))
+    }
+    let i = 0
+    this.allUsers = []
+    newArray.forEach((elem, index) => {
+      i += 1
+      const newElem = { ...elem, user_id: i }
+      this.allUsers.push(newElem)
+    })
+    // this.allUsers = []
+    // newArray.forEach((elem) => {
+    //   elem.user_id = this.allUsers.length
+    //   this.allUsers[this.allUsers.length] = elem
+    // })
+
+    this.userInfo = createUser({
+        "user_id": 3595399, "username":"surik00","first_name":"Suren","last_name":"Khorenyan","language_code":"en","profile_photo_id":"AgADAgADDeQxG4fcNgABmZPFDukwO1km_bcOAATlowK6ND80p_KQAgABAg","join_date":1560628074204
       })
-      .catch((error) => {
-        if (error.response.status != 401) { 
-          // Expecting Unauthorized only
-          console.log(error.response)
-        }
-      })
+    // axios.get('/api/getMe')
+    // // axios.get('http://localhost:3001/api/getMe')
+    //   .then((response) => {
+    //     this.userInfo = createUser(response.data.user)
+    //   })
+    //   .catch((error) => {
+    //     if (error.response.status != 401) { 
+    //       // Expecting Unauthorized only
+    //       console.log(error.response)
+    //     }
+    //   })
   }
 }
 </script>
