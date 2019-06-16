@@ -1,11 +1,13 @@
 <template lang="pug">
   div
-    a(href="#")
-      img.rounded-circle.img-fluid.avatar-mini.mr-2(v-if="user.profile_photo_id" alt="Avatar", v-bind:src="`http://localhost:3001/telegram-media/${user.profile_photo_id}`")
-      div(v-else :style="{ backgroundColor: circleColor }").circle.avatar-mini.mr-2
-        span.initials {{ initials }}
+    a(v-if="user.profile_photo_id" :href="profilePicUrl")
+      img.rounded-circle.img-fluid.avatar-mini.mr-2(alt="Avatar", :src="profilePicUrl")
+    div(v-else :style="{ backgroundColor: circleColor }").circle.avatar-mini.mr-2
+      span.initials {{ initials }}
     div.py-2
-      div(v-bind:style="{ color: nameColor }") {{ user.first_name }} {{ user.last_name }}
+      a(v-if="user.username" :href="`https://t.me/${user.username}`").link
+        div(v-bind:style="{ color: nameColor }") {{ user.first_name }} {{ user.last_name }}
+      div(v-else v-bind:style="{ color: nameColor }") {{ user.first_name }} {{ user.last_name }}
       small Join date: {{ joined }}
 </template>
 
@@ -40,11 +42,18 @@ export default {
     const colorIndex = colorsIndexes[this.user.user_id % colorsCount]
     const nameColor = colorsNameFg[colorIndex]
     const circleColor = colorsUserpicBg[colorIndex]
+
+    let profilePicUrl = '#'
+    if (this.user.profile_photo_id) {
+      profilePicUrl = `http://localhost:3001/telegram-media/${this.user.profile_photo_id}`
+      // profilePicUrl = `/telegram-media/${this.user.profile_photo_id}`
+    }
     return {
       joined,
       initials,
       nameColor,
       circleColor,
+      profilePicUrl,
     }
   },
   methods: {
