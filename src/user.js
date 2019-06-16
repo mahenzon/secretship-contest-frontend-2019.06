@@ -42,10 +42,9 @@ function createUser ({
       return `https://t.me/${this.username}`
     },
     logout() {
-      // TODO: call API and then clean cache
-      for (const prop of Object.keys(this)) {
+      Object.keys(this).forEach((prop) => {
         this[prop] = null
-      }
+      })
     },
   }
 }
