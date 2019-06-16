@@ -1,12 +1,15 @@
 <template lang="pug">
-  div.home
-    img(alt="Vue logo" src="../assets/logo.png")
+  UsersList.mx-1(v-bind:allUsers="allUsers")
 </template>
 
 <script>
+import UsersList from './UsersList'
+
 export default {
   name: 'Home',
+  props: ['allUsers'],
   components: {
+    UsersList,
   },
 }
 </script>
