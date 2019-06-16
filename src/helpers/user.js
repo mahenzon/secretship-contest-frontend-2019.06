@@ -1,5 +1,7 @@
+import joinDateString from './join-date'
+
 const DEFAULT_USERPIC = 'https://telegra.ph/file/1d86ed45c9ed18926660a.jpg'
-const dateStringOptions = { year: 'numeric', month: 'long', day: 'numeric' }
+
 function createUser ({
   user_id, 
   username,
@@ -11,7 +13,8 @@ function createUser ({
 }) {
   let profilePic
   if (profile_photo_id) {
-    profilePic = `/telegram-media/${profile_photo_id}`
+    profilePic = `http://localhost:3001/telegram-media/${profile_photo_id}`
+    // profilePic = `/telegram-media/${profile_photo_id}`
   } else {
     profilePic = DEFAULT_USERPIC
   }
@@ -26,17 +29,7 @@ function createUser ({
     profilePic,
 
     joinDateString() {
-      const joinDate = new Date(this.join_date)
-      try {
-        return joinDate.toLocaleDateString(this.language_code, dateStringOptions)
-      } catch (error) {
-        try {
-          const lang = navigator.language || navigator.userLanguage
-          return joinDate.toLocaleDateString(lang, dateStringOptions)
-        } catch (err) {
-          return joinDate.toLocaleDateString('en-US', dateStringOptions)
-        }
-      }
+      return joinDateString(this)
     },
     telegramLink() {
       return `https://t.me/${this.username}`
@@ -49,6 +42,4 @@ function createUser ({
   }
 }
 
-export default {
-  createUser,
-}
+export default createUser
