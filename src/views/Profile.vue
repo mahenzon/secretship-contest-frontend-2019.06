@@ -4,7 +4,7 @@
       .card
         .card-header
           h4 User Profile
-        .card-body
+        .card-body.img-container
           img.profile-image.rounded-circle.img-fluid.mb-3(alt="User Pic", v-bind:src="userInfo.profilePic")
           .container
             h2 {{ userInfo.first_name }} {{ userInfo.last_name }}
@@ -30,9 +30,11 @@ export default {
 </script>
 
 <style scoped>
+  .img-container {
+    max-width: 420px;
+  }
   .profile-image {
-    width: 420px;
-    height: 420px;
+    max-width: 100%;
     object-fit: cover;
     -o-object-fit: cover;
   }
