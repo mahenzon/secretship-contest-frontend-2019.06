@@ -2,7 +2,7 @@
   div
     h3 Users:
     div.my-3(v-bind:key="user.user_id" v-for="user in allUsers")
-      ListUser(v-bind:user="user")
+      ListUser(v-bind:user="user" v-bind:userInfo="userInfo")
 </template>
 
 <script>
@@ -10,7 +10,7 @@ import ListUser from './ListUser'
 
 export default {
   name: 'UsersList',
-  props: ['allUsers'],
+  props: ['allUsers', 'userInfo'],
   components: {
     ListUser,
   }
