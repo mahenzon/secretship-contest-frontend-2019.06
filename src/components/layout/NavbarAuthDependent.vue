@@ -17,7 +17,8 @@ export default {
   methods: {
     logout() {
       this.userInfo.logout()
-      axios.post('http://localhost:3001/api/logout')
+      axios.post('/api/logout')
+      // axios.post('http://localhost:3001/api/logout')
         .then((response) => {
           router.push('/')
         })
