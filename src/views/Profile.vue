@@ -1,6 +1,5 @@
 <template lang="pug">
   div(v-if="userInfo.user_id").container
-    br
     .row
       .card
         .card-header

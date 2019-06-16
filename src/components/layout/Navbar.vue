@@ -1,5 +1,5 @@
 <template lang="pug">
-  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light.mb-3
     .navbar-brand Contest
     ul.navbar-nav.mr-auto
       li.nav-item
