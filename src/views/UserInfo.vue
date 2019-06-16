@@ -1,10 +1,12 @@
 <template lang="pug">
   div(v-if="errorText").alert.alert-danger.text-center {{ errorText }}
-  Profile(v-else v-bind:userInfo="userInfo")
+  Profile(v-else :userInfo="userInfo" :noDataText="noDataText")
 </template>
 
 <script>
+import axios from 'axios';
 import Profile from './Profile'
+import createUser from '../helpers/user'
 
 export default {
   name: 'UserInfo',
@@ -15,7 +17,7 @@ export default {
     return {
       userInfo: {},
       errorText: null,
-      noDataText: 'An error occured',
+      noDataText: 'Loading user...',
     }
   },
   mounted () {
@@ -26,10 +28,23 @@ export default {
     next()
   },
   methods: {
-    prepareUserInfo () {
-      // TODO: request to api to get user info!!
-      this.userInfo = {}
-      this.errorText = `Wrong user ID ${this.$route.params.id}`
+    async prepareUserInfo() {
+      const userId = Number(this.$route.params.id)
+      if (Number.isNaN(userId)) {
+        this.errorText = `Wrong user ID '${this.$route.params.id}'`
+        return
+      }
+      try {
+        const userUrl = `/api/user/${this.$route.params.id}`
+        // const userUrl = `http://localhost:3001/api/user/${this.$route.params.id}`
+        const response = await axios.get(userUrl)
+        this.userInfo = createUser(response.data.user)
+      } catch (error) {
+        this.userInfo = {}
+        this.noDataText = 'An error occured!'
+        console.log(error)
+        console.log(error.response)
+      }
     }
   }
 }
