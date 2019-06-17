@@ -53,7 +53,7 @@ export default {
       try {
         const url = '/api/users'
         // const url = 'http://localhost:3001/api/users'
-        const params = { offset: this.allUsers.length, limit: 50 }
+        const params = { offset: this.allUsers.length, limit: 25 }
         const response = await axios.get(url, { params })
         const { users, total } = response.data
         this.totalUsersAvailable = total
@@ -77,6 +77,7 @@ export default {
   #users-list {
     height: 80vh;
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
   }
 </style>
 
