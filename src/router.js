@@ -34,6 +34,12 @@ export default new Router({
       props: true,
     },
     {
+      path: '/login',
+      name: 'login',
+      component: () => import('./views/LoginPage.vue'),
+      props: true,
+    },
+    {
       path: '/404',
       name: 'not-found',
       component: () => import('./views/NotFound.vue'),
