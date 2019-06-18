@@ -18,6 +18,11 @@ export default new Router({
       component: () => import('./views/Error.vue'),
     },
     {
+      path: '/show-error',
+      name: 'show-error',
+      component: () => import('./views/ShowError.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       component: () => import('./views/About.vue'),
