@@ -1,5 +1,3 @@
-import joinDateString from './join-date'
-
 const DEFAULT_USERPIC = 'https://telegra.ph/file/1d86ed45c9ed18926660a.jpg'
 
 
@@ -35,9 +33,6 @@ function createUser ({
         return this.photo_url
       }
       return DEFAULT_USERPIC
-    },
-    joinDateString() {
-      return joinDateString(this)
     },
     telegramLink() {
       return `https://t.me/${this.username}`
