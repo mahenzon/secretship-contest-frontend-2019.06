@@ -9,7 +9,6 @@ export default {
   name: 'ShowError',
   props: ['errorMessage'],
   mounted() {
-    console.log(this.$route.query)
     this.errorMessage.setText(this.$route.query.text)
     router.push('/error')
   },

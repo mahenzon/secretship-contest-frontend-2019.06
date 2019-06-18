@@ -30,7 +30,6 @@ export default {
   mounted() {
     const elem = document.getElementById('users-list')
     elem.addEventListener('scroll', this.handleScroll);
-    console.log('scrolling Injected');
   },
   beforeDestroy() {
     // Donno why JS cannot get this element
@@ -42,13 +41,11 @@ export default {
     handleScroll: function(e) {
       const { scrollTop, clientHeight, scrollHeight } = document.getElementById('users-list')
       if (scrollTop + clientHeight + 42 >= scrollHeight) {
-        console.log('Hit bottom!', scrollTop)
         this.loadMoreUsers()
       }
     },
     async loadMoreUsers() {
       if (this.nowFetching || (this.allUsers.length >= this.totalUsersAvailable)) return
-      console.log('load more!!!')
       this.nowFetching = true
       try {
         const url = '/api/users'
