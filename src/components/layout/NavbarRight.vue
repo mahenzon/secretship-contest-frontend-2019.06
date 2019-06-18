@@ -1,5 +1,6 @@
 <template lang="pug">
   ul(v-if="userInfo.user_id").navbar-nav.ml-auto
+    NavbarLocaleButtons
     li.nav-item
       router-link(to="/profile").nav-link Profile info
     button(@click="logout()").btn.btn-outline-dark.my-2.my-sm-0 Logout
@@ -10,10 +11,14 @@
 <script>
 import axios from 'axios'
 import router from '../../router'
+import NavbarLocaleButtons from './NavbarLocaleButtons'
 
 export default {
-  name: 'NavbarAuthDependent',
+  name: 'NavbarRight',
   props: ['userInfo'],
+  components: {
+    NavbarLocaleButtons,
+  },
   methods: {
     logout() {
       this.userInfo.logout()
