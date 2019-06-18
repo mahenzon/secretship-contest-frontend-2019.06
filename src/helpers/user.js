@@ -2,22 +2,17 @@ import joinDateString from './join-date'
 
 const DEFAULT_USERPIC = 'https://telegra.ph/file/1d86ed45c9ed18926660a.jpg'
 
+
 function createUser ({
   user_id, 
   username,
   first_name,
   last_name,
   join_date,
+  photo_url,
   language_code,
   profile_photo_id
 }) {
-  let profilePic
-  if (profile_photo_id) {
-    // profilePic = `http://localhost:3001/telegram-media/${profile_photo_id}`
-    profilePic = `/telegram-media/${profile_photo_id}`
-  } else {
-    profilePic = DEFAULT_USERPIC
-  }
   return {
     user_id,
     username,
@@ -26,8 +21,21 @@ function createUser ({
     language_code,
     join_date,
     profile_photo_id,
-    profilePic,
+    photo_url,
 
+    hasAvatar() {
+      return Boolean(this.profile_photo_id || this.photo_url)
+    },
+    getProfilePic() {
+      if (this.profile_photo_id) {
+        return `http://localhost:3001/telegram-media/${this.profile_photo_id}`
+        // return `/telegram-media/${this.profile_photo_id}`
+      }
+      if (this.photo_url) {
+        return this.photo_url
+      }
+      return DEFAULT_USERPIC
+    },
     joinDateString() {
       return joinDateString(this)
     },
