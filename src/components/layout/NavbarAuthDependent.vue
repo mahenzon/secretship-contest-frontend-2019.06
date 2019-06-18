@@ -23,7 +23,7 @@ export default {
           router.push('/')
         })
         .catch((error) => {
-          this.errorMessage = error.response.data.error
+          this.errorMessage.setText(error.response.data.error)
           router.push('/error')
         })
     },

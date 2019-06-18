@@ -17,7 +17,6 @@ import Footer from './components/layout/Footer'
 import createUser from './helpers/user'
 import router from './router';
 
-
 export default {
   name: 'app',
   components: {
@@ -26,14 +25,19 @@ export default {
   },
   data() {
     return {
-      errorMessage: 'Unexpected error!',
+      errorMessage: {
+        text: 'Unexpected error!',
+        setText(text) {
+          this.text = text
+        }
+      },
       userInfo: {},
     }
   },
   created() {
-    this.userInfo = createUser({
-        "user_id": 3595399, "username":"surik00","first_name":"Suren","last_name":"Khorenyan","language_code":"en","profile_photo_id":"AgADAgADDeQxG4fcNgABmZPFDukwO1km_bcOAATlowK6ND80p_KQAgABAg","join_date":1560628074204
-      })
+    // this.userInfo = createUser({
+    //     "user_id": 3595399, "username":"surik00","first_name":"Suren","last_name":"Khorenyan","language_code":"en","profile_photo_id":"AgADAgADDeQxG4fcNgABmZPFDukwO1km_bcOAATlowK6ND80p_KQAgABAg","join_date":1560628074204
+    //   })
     axios.get('/api/getMe', { withCredentials: true })
     // axios.get('http://localhost:3001/api/getMe', { withCredentials: true })
       .then((response) => {
