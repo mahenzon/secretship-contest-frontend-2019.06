@@ -1,7 +1,7 @@
 <template lang="pug">
   div
-    a(v-if="user.profile_photo_id" :href="profilePicUrl")
-      img.rounded-circle.img-fluid.avatar-mini.mr-2(alt="Avatar", :src="profilePicUrl")
+    a(v-if="user.hasAvatar()" :href="user.getProfilePic()")
+      img.rounded-circle.img-fluid.avatar-mini.mr-2(alt="Avatar", :src="user.getProfilePic()")
     div(v-else :style="{ backgroundColor: circleColor }").circle.avatar-mini.mr-2
       span.initials {{ initials }}
     div.py-2
@@ -42,17 +42,11 @@ export default {
     const nameColor = colorsNameFg[colorIndex]
     const circleColor = colorsUserpicBg[colorIndex]
 
-    let profilePicUrl = '#'
-    if (this.user.profile_photo_id) {
-      // profilePicUrl = `http://localhost:3001/telegram-media/${this.user.profile_photo_id}`
-      profilePicUrl = `/telegram-media/${this.user.profile_photo_id}`
-    }
     return {
       joined,
       initials,
       nameColor,
       circleColor,
-      profilePicUrl,
     }
   },
   methods: {

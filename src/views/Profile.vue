@@ -5,8 +5,8 @@
         .card-header
           h4 User Profile
         .card-body.img-container
-          a(:href="userInfo.profilePic")
-            img.profile-image.rounded-circle.img-fluid.mb-3(alt="User Pic", v-bind:src="userInfo.profilePic")
+          a(:href="userInfo.getProfilePic()")
+            img.profile-image.rounded-circle.img-fluid.mb-3(alt="User Pic", v-bind:src="userInfo.getProfilePic()")
           .container
             h2 {{ userInfo.first_name }} {{ userInfo.last_name }}
             p(v-if="userInfo.username")
