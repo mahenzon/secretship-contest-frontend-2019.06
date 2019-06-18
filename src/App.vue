@@ -36,9 +36,19 @@ export default {
     }
   },
   created() {
-    // this.userInfo = createUser({
-    //     "user_id": 3595399, "username":"surik00","first_name":"Suren","last_name":"Khorenyan","language_code":"en","profile_photo_id":"AgADAgADDeQxG4fcNgABmZPFDukwO1km_bcOAATlowK6ND80p_KQAgABAg","join_date":1560628074204
-    //   })
+    const url = '/api/getMe'
+    // const url = 'http://localhost:3001/api/getMe'
+    axios.get(url, { withCredentials: true })
+      .then((response) => {
+        this.userInfo = createUser(response.data.user)
+        this.$i18n.locale = userInfo.language_code
+      })
+      .catch((error) => {
+        if (error.response.status != 401) { 
+          // Expecting Unauthorized only
+          console.log(error.response)
+        }
+      })
   }
 }
 </script>
