@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    h1 {{ $t('notFoundTitle') }}
+    h1(v-t="'notFoundTitle'")
     section.error-container
       span
         span 4
@@ -8,7 +8,7 @@
       span
         span 4
     .link-container
-      a.more-link(href='/') {{ $t('backToHome') }}
+      a(v-t="'backToHome'").more-link(href='/')
 </template>
 
 

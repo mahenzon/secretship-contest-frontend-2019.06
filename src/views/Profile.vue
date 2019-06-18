@@ -3,7 +3,7 @@
     .row
       .card
         .card-header
-          h4 {{ $t('profileTitle') }}
+          h4(v-t="'profileTitle'")
         .card-body.img-container
           a(:href="userInfo.getProfilePic()")
             img.profile-image.rounded-circle.img-fluid.mb-3(alt="User Pic", v-bind:src="userInfo.getProfilePic()")

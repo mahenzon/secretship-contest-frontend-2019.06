@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    h3 {{ $t('usersTitle') }}:
+    h3(v-t="'usersTitle'")
     #users-list
       div.my-3(v-bind:key="user.user_id" v-for="user in allUsers")
         ListUser(v-bind:user="user" v-bind:userInfo="userInfo")

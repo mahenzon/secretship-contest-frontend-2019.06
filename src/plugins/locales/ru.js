@@ -8,7 +8,7 @@ const locale = {
     logoutButton: 'Выйти',
 
     // Index
-    usersTitle: 'Пользователи',
+    usersTitle: 'Пользователи:',
 
     // About
     aboutAlert: 'Этот проект создан, чтобы принять участие в конкурсе от команды Secretship',

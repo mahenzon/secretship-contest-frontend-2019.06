@@ -1,17 +1,17 @@
 <template lang="pug">
   .login-form
-    h3.auth-title {{ $t('loginTitle') }}
+    h3(v-t="'loginTitle'").auth-title
 
     .row.row-sm-offset-3
       .col-xs-12.col-sm-6#tgLogin.text-center
-        div#errorText.text-center {{ $t('loginButtonErrorLoad') }}
+        div(v-t="'loginButtonErrorLoad'")#errorText.text-center
     .row.row-sm-offset-3.login-tg
       .col-xs-12.col-sm-6
         hr.hr-or
-        span.span-or {{ $t('loginOr') }}
+        span(v-t="'loginOr'").span-or
     .row.row-sm-offset-3
       .col-xs-12.col-sm-6
-        a(href="https://t.me/myawbot?start=login" target="blank").btn.btn-lg.btn-outline-primary.btn-block {{ $t('loginTitleButton') }}
+        a(href="https://t.me/myawbot?start=login" target="blank" v-t="'loginTitleButton'").btn.btn-lg.btn-outline-primary.btn-block
 </template>
 
 <script>

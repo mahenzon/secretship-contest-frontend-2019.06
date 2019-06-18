@@ -6,9 +6,9 @@
     #navbarText.collapse.navbar-collapse
       ul.navbar-nav.mr-auto
         li.nav-item
-          router-link(to="/").nav-link {{ $t('homeLabel') }}
+          router-link(to="/" v-t="'homeLabel'").nav-link
         li.nav-item
-          router-link(to="/about").nav-link {{ $t('aboutLabel') }}
+          router-link(to="/about" v-t="'aboutLabel'").nav-link
       NavbarRight(v-bind:userInfo="userInfo")
 </template>
 

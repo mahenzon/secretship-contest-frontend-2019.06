@@ -8,7 +8,7 @@ const locale = {
     logoutButton: 'Logout',
 
     // Index
-    usersTitle: 'Users',
+    usersTitle: 'Users:',
 
     // About
     aboutAlert: 'This project is created to participate in this Secretship Contest',

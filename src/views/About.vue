@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    div.alert.alert-info.text-center {{ $t('aboutAlert') }}:
+    div(v-t="'aboutAlert'").alert.alert-info.text-center
     div#tgPost
 </template>
 
