@@ -9,6 +9,7 @@
 <script>
 import axios from 'axios';
 import ListUser from './ListUser'
+import createUser from '../helpers/user'
 
 export default {
   name: 'UsersList',
@@ -63,7 +64,7 @@ export default {
     addUsersSafe(users) {
       users.forEach((element) => {
         if (this.usersIds.has(element.user_id)) return
-        this.allUsers.push(element)
+        this.allUsers.push(createUser(element))
       })
     },
   } 
