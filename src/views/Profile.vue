@@ -3,7 +3,7 @@
     .row
       .card
         .card-header
-          h4 User Profile
+          h4 {{ $t('profileTitle') }}
         .card-body.img-container
           a(:href="userInfo.getProfilePic()")
             img.profile-image.rounded-circle.img-fluid.mb-3(alt="User Pic", v-bind:src="userInfo.getProfilePic()")
@@ -15,9 +15,9 @@
               small.text-secondary ID: {{ userInfo.user_id }}
               span(v-if="userInfo.language_code")
                 br
-                small.text-secondary Language: {{ userInfo.language_code }}
+                small.text-secondary {{ $t('language') }}: {{ userInfo.language_code }}
           hr
-          div Join date: {{ userInfo.joinDateString() }}
+          div <b>{{ $t('joinDate') }}</b> {{ $d(new Date(userInfo.join_date), 'long') }}
   div(v-else)
     h1 {{ noDataText || 'Please authorize' }}
 </template>

@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    div.alert.alert-info.text-center This project is created to participate in this Secretship Contest:
+    div.alert.alert-info.text-center {{ $t('aboutAlert') }}:
     div#tgPost
 </template>
 

@@ -1,17 +1,17 @@
 <template lang="pug">
   .login-form
-    h3.auth-title You have two blue pills
+    h3.auth-title {{ $t('loginTitle') }}
 
     .row.row-sm-offset-3
       .col-xs-12.col-sm-6#tgLogin.text-center
-        div#errorText.text-center Error loading button
+        div#errorText.text-center {{ $t('loginButtonErrorLoad') }}
     .row.row-sm-offset-3.login-tg
       .col-xs-12.col-sm-6
         hr.hr-or
-        span.span-or or
+        span.span-or {{ $t('loginOr') }}
     .row.row-sm-offset-3
       .col-xs-12.col-sm-6
-        a(href="https://t.me/myawbot?start=login" target="blank").btn.btn-lg.btn-outline-primary.btn-block Login via Telegram Bot
+        a(href="https://t.me/myawbot?start=login" target="blank").btn.btn-lg.btn-outline-primary.btn-block {{ $t('loginTitleButton') }}
 </template>
 
 <script>

@@ -2,10 +2,12 @@
   ul(v-if="userInfo.user_id").navbar-nav.ml-auto
     NavbarLocaleButtons
     li.nav-item
-      router-link(to="/profile").nav-link Profile info
-    button(@click="logout()").btn.btn-outline-dark.my-2.my-sm-0 Logout
+      router-link(to="/profile").nav-link {{ $t('profileLabel') }}
+    button(@click="logout()").btn.btn-outline-dark.my-2.my-sm-0 {{ $t('logoutButton') }}
   ul(v-else).navbar-nav.ml-auto
-    a(href="#/login").btn.btn-outline-primary.my-2.my-sm-0 Login
+    NavbarLocaleButtons
+    li.nav-item
+      a(href="#/login").btn.btn-outline-primary.my-2.my-sm-0 {{ $t('loginButton') }}
 </template>
 
 <script>

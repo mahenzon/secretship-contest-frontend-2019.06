@@ -7,11 +7,10 @@
     div.py-2
       a(:href="`/#/user/${user.user_id}`").link
         div(v-bind:style="{ color: nameColor }") {{ user.first_name }} {{ user.last_name }}
-      small Join date: {{ joined }}
+      small {{ $t('joinDate') }} {{ $d(new Date(this.user.join_date), 'short', $i18n.locale) }}
 </template>
 
 <script>
-import joinDateString from '../helpers/join-date'
 import colorPalette from '../helpers/color-palette'
 
 const {
@@ -25,13 +24,6 @@ export default {
   name: 'ListUser',
   props: ['user', 'userInfo'],
   data() {
-    let langCode
-    if (this.userInfo.language_code) {
-      langCode = this.userInfo.language_code
-    } else {
-      langCode = navigator.language || navigator.userLanguage
-    }
-    const joined = joinDateString({ join_date: this.user.join_date, language_code: langCode })
 
     let initials = this.user.first_name.charAt(0)
     if (this.user.last_name) {
@@ -43,7 +35,6 @@ export default {
     const circleColor = colorsUserpicBg[colorIndex]
 
     return {
-      joined,
       initials,
       nameColor,
       circleColor,
