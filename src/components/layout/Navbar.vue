@@ -1,5 +1,5 @@
 <template lang="pug">
-  nav.navbar.navbar-expand-lg.navbar-light.bg-light.mb-3.navbar-expand-sm
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light.mb-3.navbar-expand-md
     .navbar-brand Contest
     button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarText', aria-controls='navbarText', aria-expanded='false', aria-label='Toggle navigation')
       span.navbar-toggler-icon
