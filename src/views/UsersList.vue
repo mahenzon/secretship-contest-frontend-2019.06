@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import ListUser from './ListUser'
 import createUser from '../helpers/user'
 
@@ -30,13 +29,13 @@ export default {
   },
   mounted() {
     const elem = document.getElementById('users-list')
-    elem.addEventListener('scroll', this.handleScroll);
+    elem.addEventListener('scroll', this.handleScroll)
   },
   beforeDestroy() {
     // Donno why JS cannot get this element
     // const elem = document.getElementById('users-list')
-    // elem.removeEventListener('scroll', this.handleScroll);
-    // console.log('scrolling Destroyed');
+    // elem.removeEventListener('scroll', this.handleScroll)
+    // console.log('scrolling Destroyed')
   },
   methods: {
     handleScroll: function(e) {
@@ -49,10 +48,8 @@ export default {
       if (this.nowFetching || (this.allUsers.length >= this.totalUsersAvailable)) return
       this.nowFetching = true
       try {
-        const url = '/api/users'
-        // const url = 'http://localhost:3001/api/users'
         const params = { offset: this.allUsers.length, limit: 25 }
-        const response = await axios.get(url, { params })
+        const response = await this.$axios.get('/api/users', { params })
         const { users, total } = response.data
         this.totalUsersAvailable = total
         this.addUsersSafe(users)

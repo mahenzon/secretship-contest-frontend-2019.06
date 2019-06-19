@@ -23,7 +23,7 @@ export default {
     newScript.src = 'https://telegram.org/js/telegram-widget.js?6'
     newScript.setAttribute('data-telegram-login', 'myawbot')
     newScript.setAttribute('data-size', 'large')
-    newScript.setAttribute('data-auth-url', '/api/login')
+    newScript.setAttribute('data-auth-url', `${this.$axios.defaults.baseURL}api/login`)
     document.getElementById('tgLogin').appendChild(newScript)
     document.getElementById('errorText').innerHTML = ''
   },

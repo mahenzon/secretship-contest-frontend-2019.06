@@ -1,15 +1,16 @@
+import config from '../config'
+
 const DEFAULT_USERPIC = 'https://telegra.ph/file/1d86ed45c9ed18926660a.jpg'
 
-
-function createUser ({
-  user_id, 
+function createUser({
+  user_id,
   username,
   first_name,
   last_name,
   join_date,
   photo_url,
   language_code,
-  profile_photo_id
+  profile_photo_id,
 }) {
   return {
     user_id,
@@ -26,8 +27,7 @@ function createUser ({
     },
     getProfilePic() {
       if (this.profile_photo_id) {
-        return `http://localhost:3001/telegram-media/${this.profile_photo_id}`
-        // return `/telegram-media/${this.profile_photo_id}`
+        return `${config.baseURL}telegram-media/${this.profile_photo_id}`
       }
       if (this.photo_url) {
         return this.photo_url

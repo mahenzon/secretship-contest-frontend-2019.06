@@ -3,10 +3,9 @@
 </template>
 
 <script>
-import axios from 'axios';
 import Profile from './Profile'
 import createUser from '../helpers/user'
-import router from '../router';
+import router from '../router'
 
 export default {
   name: 'UserInfo',
@@ -36,9 +35,7 @@ export default {
         return router.push('/error')
       }
       try {
-        const userUrl = `/api/user/${this.$route.params.id}`
-        // const userUrl = `http://localhost:3001/api/user/${this.$route.params.id}`
-        const response = await axios.get(userUrl)
+        const response = await this.$axios.get(`/api/user/${this.$route.params.id}`)
         this.userInfo = createUser(response.data.user)
       } catch (error) {
         this.userInfo = {}

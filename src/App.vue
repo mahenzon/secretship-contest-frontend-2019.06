@@ -10,12 +10,11 @@
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import axios from 'axios'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 
 import createUser from './helpers/user'
-import router from './router';
+import router from './router'
 
 
 export default {
@@ -51,9 +50,7 @@ export default {
     }
   },
   created() {
-    const url = '/api/getMe'
-    // const url = 'http://localhost:3001/api/getMe'
-    axios.get(url, { withCredentials: true })
+    this.$axios.get('/api/getMe', { withCredentials: true })
       .then((response) => {
         this.userInfo = createUser(response.data.user)
         this.$i18n.locale = userInfo.language_code

@@ -5,7 +5,7 @@
     div(v-else :style="{ backgroundColor: circleColor }").circle.avatar-mini.mr-2
       span.initials {{ initials }}
     div.py-2
-      a(:href="`/#/user/${user.user_id}`").link
+      a(:href="`#/user/${user.user_id}`").link
         div(v-bind:style="{ color: nameColor }") {{ user.first_name }} {{ user.last_name }}
       small {{ $t('joinDate') }} {{ $d(new Date(this.user.join_date), 'short', $i18n.locale) }}
 </template>

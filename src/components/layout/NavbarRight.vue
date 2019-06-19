@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import router from '../../router'
 import NavbarLocaleButtons from './NavbarLocaleButtons'
 
@@ -24,8 +23,7 @@ export default {
   methods: {
     logout() {
       this.userInfo.logout()
-      axios.post('/api/logout', { withCredentials: true })
-      // axios.post('http://localhost:3001/api/logout', { withCredentials: true })
+      this.$axios.post('/api/logout', { withCredentials: true })
         .then((response) => {
           router.push('/')
         })

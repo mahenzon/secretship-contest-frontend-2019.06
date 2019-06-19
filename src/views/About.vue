@@ -25,7 +25,7 @@ export default {
     newScript.src = 'https://telegram.org/js/telegram-widget.js?6'
     newScript.setAttribute('data-telegram-post', 'SecretshipContests/4')
     newScript.setAttribute('width', '100%')
-    document.getElementById('tgPost').appendChild(newScript);
+    document.getElementById('tgPost').appendChild(newScript)
   }
 }
 </script>
