@@ -12,6 +12,7 @@ const locale = {
 
     // About
     aboutAlert: 'Этот проект создан, чтобы принять участие в конкурсе от команды Secretship',
+    sourceCode: 'Исходный код (GitHub):',
 
     // Profile
     profileTitle: 'Информация о профиле',

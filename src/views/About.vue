@@ -1,7 +1,18 @@
 <template lang="pug">
   div
     div(v-t="'aboutAlert'").alert.alert-info.text-center
-    div#tgPost
+    .row
+      div.col-12.col-sm-12.col-md-8.col-lg-7#tgPost
+      div.col-12.col-sm-12.col-md-4.col-lg-5
+        h3(v-t="'sourceCode'")
+        .list-group
+          a.list-group-item.list-group-item-action(target='_blank' href='https://github.com/surik00/secretship-contest-bot-2019.06')
+            | surik00/secretship-contest-bot-2019.06
+          a.list-group-item.list-group-item-action(target='_blank' href='https://github.com/surik00/secretship-contest-backend-2019.06')
+            | surik00/secretship-contest-backend-2019.06
+          a.list-group-item.list-group-item-action(target='_blank' href='https://github.com/surik00/secretship-contest-frontend-2019.06')
+            | surik00/secretship-contest-frontend-2019.06
+
 </template>
 
 
