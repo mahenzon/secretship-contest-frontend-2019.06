@@ -31,10 +31,7 @@ Object.keys(palette).sort().forEach((name) => {
 })
 
 const colorsCount = colorsNameFg.length
-const colorsIndexes = []
-for (let i = 0; i < colorsCount; i++) {
-  colorsIndexes.push(i)
-}
+const colorsIndexes = [...Array(colorsCount).keys()]  // 0, 1, 2...
 
 // Shuffle colors
 colorsIndexes.sort(() => Math.random() - 0.5)
