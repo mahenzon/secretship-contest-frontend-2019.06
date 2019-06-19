@@ -31,6 +31,9 @@ export default {
         })
         .catch((error) => {
           this.errorMessage.setText(error.response.data.error)
+          if (error.response.data.args) {
+            this.errorMessage.setArgs(error.response.data.args)
+          }
           router.push('/error')
         })
     },

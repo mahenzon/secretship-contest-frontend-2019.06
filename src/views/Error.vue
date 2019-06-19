@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(v-t="this.errorMessage.text").alert.alert-danger.text-center
+  div.alert.alert-danger.text-center {{ $t(this.errorMessage.text, this.errorMessage.args)}}
 </template>
 
 <script>

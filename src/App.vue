@@ -28,9 +28,24 @@ export default {
     return {
       errorMessage: {
         text: 'unexpectedError',
+        args: [],
         setText(text) {
           this.text = text
-        }
+        },
+        setArgs(args) {
+          while (this.args.length > 0) {
+            // Emptying array safe, not replacing the object
+            this.args.pop()
+          }
+          // Appending new data
+          if (Array.isArray(args)) {
+            // Unpack array to fullfill args array
+            this.args.push(...args) 
+          } else {
+            // Push only one element
+            this.args.push(args)
+          }
+        },
       },
       userInfo: {},
     }

@@ -33,6 +33,8 @@ const locale = {
     notAuthorised: 'Not authorized',
     sessionExpired: 'Session expired. Please try again',
     errorLogOut: 'Error logging you out. Please try again',
+    invalidId: "ID cannot be like '{0}'!",
+    userNotFound: 'User with ID {0} not found',
 
     //
     language: 'Language',

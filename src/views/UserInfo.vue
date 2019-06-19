@@ -1,22 +1,22 @@
 <template lang="pug">
-  div(v-if="errorText").alert.alert-danger.text-center {{ errorText }}
-  Profile(v-else :userInfo="userInfo" :noDataText="noDataText")
+  Profile(:userInfo="userInfo" :noDataText="noDataText")
 </template>
 
 <script>
 import axios from 'axios';
 import Profile from './Profile'
 import createUser from '../helpers/user'
+import router from '../router';
 
 export default {
   name: 'UserInfo',
+  props: ['errorMessage'],
   components: {
     Profile,
   },
   data () {
     return {
       userInfo: {},
-      errorText: null,
       noDataText: 'Loading user...',
     }
   },
@@ -31,8 +31,9 @@ export default {
     async prepareUserInfo() {
       const userId = Number(this.$route.params.id)
       if (Number.isNaN(userId)) {
-        this.errorText = `Wrong user ID '${this.$route.params.id}'`
-        return
+        this.errorMessage.setText('invalidId')
+        this.errorMessage.setArgs(this.$route.params.id)
+        return router.push('/error')
       }
       try {
         const userUrl = `/api/user/${this.$route.params.id}`
